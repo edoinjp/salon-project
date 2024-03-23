@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/welcome'
   get 'administrators/index'
   get 'administrators/show'
   get 'administrators/new'
@@ -33,7 +34,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root 'layouts/application.html.erb'
+  root 'pages#welcome'
+
   get '/administrators', to: 'administrators#index'
   get '/administrators/:id', to: 'administrators#show', as: 'administrator'
   get '/administrators/new', to: 'administrators#new'
