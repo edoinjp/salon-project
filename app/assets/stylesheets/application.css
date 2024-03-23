@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ /* Dark Mode Styles */
+ .dark-mode body {
+   background-color: #343a40;
+   color: #f8f9fa;
+ }
  .selector-for-some-widget {
   box-sizing: content-box;
 }
