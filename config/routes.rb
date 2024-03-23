@@ -33,4 +33,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'layouts/application.html.erb'
+  get '/administrators', to: 'administrators#index'
+  get '/administrators/:id', to: 'administrators#show', as: 'administrator'
+  get '/administrators/new', to: 'administrators#new'
+  post '/administrators', to: 'administrators#create'
+  get '/administrators/:id/edit', to: 'administrators#edit', as: 'edit_administrator'
+  patch '/administrators/:id', to: 'administrators#update'
+  delete '/administrators/:id', to: 'administrators#destroy'
 end
