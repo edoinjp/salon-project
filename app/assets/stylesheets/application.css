@@ -14,10 +14,20 @@
  *= require_self
  */
  /* Dark Mode Styles */
+
  .dark-mode body {
    background-color: #343a40;
    color: #f8f9fa;
  }
  .selector-for-some-widget {
   box-sizing: content-box;
+}
+.blur-background {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  background-color: rgba(244, 244, 244, 0.495); /* Blue background with transparency */
+  backdrop-filter: blur(10px); /* Apply a blur effect */
+  /* margin-top: -150px; */
 }
