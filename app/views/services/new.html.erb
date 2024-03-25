@@ -1,2 +1,10 @@
-<h1>Services#new</h1>
-<p>Find me in app/views/services/new.html.erb</p>
+<%= form_with(model: @service. local: true) do |form|%>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name%>
+  </div>
+    <%# will be added needed inputs later %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
