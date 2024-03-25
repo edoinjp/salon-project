@@ -1,0 +1,23 @@
+<form action="/services" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="service[name]" required>
+  <br>
+
+  <label for="description">Description:</label>
+  <textarea id="description" name="service[description]" required></textarea>
+  <br>
+
+  <label for="duration">Duration (minutes):</label>
+  <input type="number" id="duration" name="service[duration]" required>
+  <br>
+
+  <label for="price">Price:</label>
+  <input type="number" id="price" name="service[price]" step="0.01" required>
+  <br>
+
+  <label for="order_sequence">Order Sequence:</label>
+  <input type="number" id="order_sequence" name="service[order_sequence]">
+  <br>
+
+  <input type="submit" value="Create Service">
+</form>
