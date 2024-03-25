@@ -1,2 +1,4 @@
-<h1>Services#show</h1>
-<p>Find me in app/views/services/show.html.erb</p>
+<h1><%= @service.name %></h1>
+<p>Description: <%= @service.description %></p>
+<p>Duration: <%= @service.duration %> minutes</p>
+<p>Price: <%= number_to_currency(@service.price) %></p>
