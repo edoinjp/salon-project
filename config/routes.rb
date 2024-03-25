@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Define RESTful routes for managing services
+  resources :services
+   # routes...
   get 'pages/welcome'
   get 'administrators/index'
   get 'administrators/show'
