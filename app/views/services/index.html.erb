@@ -1,2 +1,6 @@
 <h1>Services#index</h1>
-<p>Find me in app/views/services/index.html.erb</p>
+<ul>
+  <% @services.each do |service| %>
+  <li><%= link_to service.name, service%></li>
+  <% end %>
+</ul>
