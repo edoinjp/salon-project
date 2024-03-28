@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # Define RESTful routes for managing services
   resources :services
+  resources :administrators
+  resources :bookings
+  resources :user
    # routes...
   get 'pages/welcome'
   get 'administrators/index'
@@ -39,11 +42,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   root 'pages#welcome'
 
-  get '/administrators', to: 'administrators#index'
-  get '/administrators/:id', to: 'administrators#show', as: 'administrator'
-  get '/administrators/new', to: 'administrators#new'
-  post '/administrators', to: 'administrators#create'
-  get '/administrators/:id/edit', to: 'administrators#edit', as: 'edit_administrator'
-  patch '/administrators/:id', to: 'administrators#update'
-  delete '/administrators/:id', to: 'administrators#destroy'
+
 end

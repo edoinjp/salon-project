@@ -1,9 +1,13 @@
- <%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary' %>
+<%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary' %>
+
 <% if @service %>
   <h1><%= @service.name %></h1>
   <p>Description: <%= @service.description %></p>
   <p>Duration: <%= @service.duration %> minutes</p>
   <p>Price: <%= number_to_currency(@service.price) %></p>
+
+  <%= link_to "Edit Service", edit_service_path(@service), class: "btn btn-secondary mr-2" %>
+  <%= link_to "Delete Service", @service, method: :delete, data: { confirm: "Are you sure you want to delete this service?" }, class: "btn btn-danger" %>
 <% else %>
   <p>Service not found</p>
 <% end %>
