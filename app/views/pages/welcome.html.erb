@@ -1,59 +1,43 @@
 <div class="card bg-dark text-white" style="position: relative;">
   <%= image_tag("bgimg/bgimg.png", class: "card-img", style: "height: 40rem;") %>
-<div class="card-img-overlay d-flex flex-column justify-content-center " style="color:black;">
-<div class=" blur-background">
-
-  <h1 class="card-title">Card title</h1>
-  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-  <p class="card-text">Last updated 3 mins ago</p>
+  <div class="card-img-overlay d-flex flex-column justify-content-center " style="color:black;">
+    <div class=" blur-background">
+      <h1 class="card-title">Card title</h1>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">Last updated 3 mins ago</p>
+    </div>
+  </div>
 </div>
-</div>
-
-</div>
-
-
 <div class="">
   <br>
-  <h2 style="text-align: center;">Title</h2>
+  <h2 style="text-align: center;">services</h2>
   <br>
-<div class="container">
-      <h1>Services</h1>
+  <section style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+  <div class="container">
+    <div class="row">
       <% @services.each do |service| %>
-        <div>
-          <h3><%= link_to service.name, service %></h3>
-          <p><%= service.description %></p>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <!-- Image -->
+            <img src="service_image_url_here" class="card-img-top" alt="Service Image">
+            <div class="card-body">
+              <!-- Service Information -->
+              <h5 class="card-title"><%= link_to service.name, service %></h5>
+              <p class="card-text">Duration: <%= service.duration %> minutes</p>
+             <p class="card-text"><%= truncate(service.description, length: 20) %></p>
+              <p class="card-text">Price: <%= number_to_currency(service.price) %></p>
+              <!-- Button to View Service Details -->
+              <%= link_to 'View Details', service, class: 'btn btn-primary' %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-  <section style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
-    <div class="card" style="width: 18rem; margin-bottom: 20px;">
-      <%= image_tag("bgimg/bgimg.png", class: "card-img", style: "height: 12rem;") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem; margin-bottom: 20px;">
-      <%= image_tag("bgimg/bgimg.png", class: "card-img", style: "height: 12rem;") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem; margin-bottom: 20px;">
-      <%= image_tag("bgimg/bgimg.png", class: "card-img", style: "height: 12rem;") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+  </div>
   </section>
-   <br>
-  <h2 style="text-align: center;">see more</h2>
+  <br>
+  <h2 style="text-align: center;"> <%= link_to 'All services', services_path %></h2>
+
   <br>
 </div>
-
 <br>
