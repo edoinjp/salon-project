@@ -1,9 +1,10 @@
 <h1>Services#index</h1>
+ <%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary' %>
 <ul>
   <% @services.each do |service| %>
     <li>
       <%= link_to service.name, service %>
-      <%= link_to 'Show', service %>
+
     </li>
   <% end %>
 </ul>

@@ -11,11 +11,20 @@
 
 </div>
 
+
 <div class="">
   <br>
   <h2 style="text-align: center;">Title</h2>
   <br>
-
+<div class="container">
+      <h1>Services</h1>
+      <% @services.each do |service| %>
+        <div>
+          <h3><%= link_to service.name, service %></h3>
+          <p><%= service.description %></p>
+        </div>
+      <% end %>
+    </div>
   <section style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
     <div class="card" style="width: 18rem; margin-bottom: 20px;">
       <%= image_tag("bgimg/bgimg.png", class: "card-img", style: "height: 12rem;") %>
