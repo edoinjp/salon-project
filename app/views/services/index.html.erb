@@ -1,6 +1,11 @@
 <h1>Services#index</h1>
 <ul>
   <% @services.each do |service| %>
-  <li><%= link_to service.name, service%></li>
+    <li>
+      <%= link_to service.name, service %>
+      <%= link_to 'Show', service %>
+    </li>
   <% end %>
 </ul>
+
+<%= link_to "Create New Service", new_service_path, class: "btn btn-primary" %>
