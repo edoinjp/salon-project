@@ -1,7 +1,6 @@
 <div class="container mt-4">
   <%# <h1 class="mb-4">Services#index</h1> %>
-  <%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary mb-4' %>
-
+<%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary' %>
   <section style="display: flex; flex-wrap: wrap; justify-content: flex-start; margin: 20px;">
      <% @services.each do |service| %>
           <div class="col-md-4 mb-4">

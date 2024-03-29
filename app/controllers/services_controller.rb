@@ -36,7 +36,6 @@ class ServicesController < ApplicationController
     redirect_to services_path, notice: "Service was successfully deleted."
   end
 
-
   private
 
   def set_service
