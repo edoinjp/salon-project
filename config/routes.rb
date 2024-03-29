@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  devise_for :administrators
   # Define RESTful routes for managing services
   resources :services
 
@@ -22,6 +24,5 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   delete '/services/:id', to: 'services#destroy'
-
 
 end
