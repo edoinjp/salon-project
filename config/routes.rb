@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  devise_for :administrators
   # Define RESTful routes for managing services
   resources :services
 
@@ -23,6 +25,4 @@ Rails.application.routes.draw do
 
   delete '/services/:id', to: 'services#destroy'
 
- #  default URL options for Devise in development environment ( must be changed when go on production) !!!!!!!!!!!!
- config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
