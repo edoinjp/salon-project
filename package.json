@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@hotwired/turbo-rails": "^8.0.4",
     "@popperjs/core": "^2.11.8",
     "chart.js": "^3.9.1"
   }

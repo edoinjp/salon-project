@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
+  # Default Devise routes for users and administrators
   devise_for :users
   devise_for :administrators
+
+  # Define custom sign-out routes for both users and administrators
+  devise_scope :user do
+    delete '/logout', to: 'devise/sessions#destroy', as: :user_logout
+  end
+
+  devise_scope :administrator do
+    delete '/logout_admin', to: 'devise/sessions#destroy', as: :administrator_logout
+  end
+
   # Define RESTful routes for managing services
   resources :services
 
@@ -22,7 +33,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'pages#welcome'
-
-  delete '/services/:id', to: 'services#destroy'
-
 end

@@ -4,9 +4,11 @@
 //= require actioncable
 //= require Chart.bundle
 
-import "@hotwired/turbo-rails"
-import "controllers"
-import "@rails/actioncable"
-import "@popperjs/core"
-import "bootstrap"
-import "chartkick"
+// Add other JavaScript dependencies here using //= require
+//= require "@hotwired/turbo-rails"
+//= require controllers
+//= require "@rails/actioncable"
+//= require "@popperjs/core"
+//= require bootstrap
+//= require chartkick
+//= require chart.js/dist/Chart.bundle

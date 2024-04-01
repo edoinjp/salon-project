@@ -1,30 +1,53 @@
 <div class="container mt-4">
-  <form action="/services" method="post">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" name="service[name]" required>
+  <form action="/services" method="post" class="needs-validation bg-light p-4 rounded" novalidate>
+    <h2 class="text-center mb-4">Create a New Service</h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" class="form-control" id="name" name="service[name]" required>
+          <div class="invalid-feedback">
+            Please provide a name for the service.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="duration" class="form-label">Duration (minutes):</label>
+          <input type="number" class="form-control" id="duration" name="service[duration]" required>
+          <div class="invalid-feedback">
+            Please provide a valid duration for the service.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="price" class="form-label">Price:</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="number" class="form-control" id="price" name="service[price]" step="0.01" required>
+            <div class="invalid-feedback">
+              Please provide a valid price for the service.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="order_sequence" class="form-label">Order Sequence:</label>
+          <input type="number" class="form-control" id="order_sequence" name="service[order_sequence]">
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="description">Description:</label>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
       <textarea class="form-control" id="description" name="service[description]" rows="3" required></textarea>
+      <div class="invalid-feedback">
+        Please provide a description for the service.
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="duration">Duration (minutes):</label>
-      <input type="number" class="form-control" id="duration" name="service[duration]" required>
-    </div>
-
-    <div class="form-group">
-      <label for="price">Price:</label>
-      <input type="number" class="form-control" id="price" name="service[price]" step="0.01" required>
-    </div>
-
-    <div class="form-group">
-      <label for="order_sequence">Order Sequence:</label>
-      <input type="number" class="form-control" id="order_sequence" name="service[order_sequence]">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create Service</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Create Service</button>
   </form>
 </div>
