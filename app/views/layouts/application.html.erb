@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%# fontawesome %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   </head>
   <body>
     <div class="pos-f-t">
@@ -35,13 +37,24 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                services
+                <% if current_user %>
+                  <%= current_user.email %>
+                <% else %>
+                  <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+                <% end %>
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                <a class="dropdown-item" href="#">Create </a>
-                <a class="dropdown-item" href="#">Delete</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Edit</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if current_user %>
+                  <!-- Display links for signed-in users -->
+                  <a class="dropdown-item" href="#">Edit Profile</a>
+                  <a class="dropdown-item" href="#">Change Password</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete">Log Out</a>
+                <% else %>
+                  <!-- Display links for non-signed-in users -->
+                  <a class="dropdown-item" href="<%= new_user_session_path %>">Sign In</a>
+                  <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign Up</a>
+                <% end %>
               </div>
             </li>
             <li class="nav-item">
@@ -55,22 +68,18 @@
         </div>
       </nav>
     </div>
-<%- if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign up', new_user_registration_path %>
-  <%= link_to 'Sign in', new_user_session_path %>
-<% end %>
-
-<%- if administrator_signed_in? %>
-  <%= link_to 'Sign out', destroy_administrator_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign up', new_administrator_registration_path %>
-  <%= link_to 'Sign in', new_administrator_session_path %>
-<% end %>
-
-
-
+    <%- if user_signed_in? %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign up', new_user_registration_path %>
+      <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
+    <%- if administrator_signed_in? %>
+      <%= link_to 'Sign out', destroy_administrator_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign up', new_administrator_registration_path %>
+      <%= link_to 'Sign in', new_administrator_session_path %>
+    <% end %>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
