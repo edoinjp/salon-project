@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Define RESTful routes for managing bookings
   resources :bookings
 
+
   # Define RESTful routes for managing users
   resources :users
 
@@ -23,6 +24,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'pages#welcome'
 
-  delete '/services/:id', to: 'services#destroy'
+  devise_scope :user do
+    delete '/logout', to: 'devise/sessions#destroy', as: :logout
+  end
+
+  devise_scope :administrator do
+    delete '/logout_admin', to: 'devise/sessions#destroy', as: :logout_admin
+  end
+
 
 end

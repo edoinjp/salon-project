@@ -1,5 +1,9 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
+
+  def show
+    # @user = User.find(params[:id])
+  end
 
   def new
     @user = User.new
@@ -22,12 +26,10 @@ class UserController < ApplicationController
   def update
   end
 
-  def destroy
-  end
-
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :email, :password_hash, :phone_number)
+    params.require(:user).permit(:user_name, :email, :password, :phone_number)
   end
+
 end
