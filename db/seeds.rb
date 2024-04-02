@@ -8,8 +8,14 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 # Create admin user
-Administrator.find_or_create_by(email: 'admin@example.com') do |admin|
+admin = Administrator.find_or_create_by(email: 'admin@example.com') do |admin|
   admin.username = 'admin'
   admin.password = 'password'
   admin.password_confirmation = 'password'
+end
+
+if admin.persisted?
+  puts "Admin user created successfully!"
+else
+  puts "Admin user already exists."
 end
