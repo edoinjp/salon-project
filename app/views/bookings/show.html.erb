@@ -1,2 +1,8 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<!-- app/views/bookings/show.html.erb -->
+<p>
+  <strong>Booking Date:</strong>
+  <%= @booking.booking_date %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>
