@@ -12,13 +12,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = current_user.bookings.Build(booking_params)
+    @booking = current_user.bookings.build(booking_params)
     if @booking.save
-      redirect_to @booking, notice:`booking was succesfully created`
+      redirect_to @booking, notice: 'Booking was successfully created'
     else
       render :new
     end
   end
+
 
   def edit
     @booking = Booking.find(params[:id])
@@ -39,4 +40,13 @@ class BookingsController < ApplicationController
     @booking.destroy
     redirect_to bookings_url, notice: `booking was succesfully deleted`
   end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:booking_date, :service_id, :administrator_id)
+  end
+
+
+
 end

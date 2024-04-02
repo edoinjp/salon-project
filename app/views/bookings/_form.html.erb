@@ -11,10 +11,22 @@
     </div>
   <% end %>
 
-  <!-- Add booking form fields here -->
+  <!-- Booking Date Field -->
   <div class="field">
     <%= form.label :booking_date %>
     <%= form.datetime_field :booking_date %>
+  </div>
+
+  <!-- Service Selection Field -->
+  <div class="field">
+    <%= form.label :service_id %>
+    <%= form.collection_select :service_id, Service.all, :id, :name %>
+  </div>
+
+  <!-- Administrator Selection Field -->
+  <div class="field">
+    <%= form.label :administrator_id %>
+    <%= form.collection_select :administrator_id, Administrator.all, :id, :username %>
   </div>
 
   <div class="actions">

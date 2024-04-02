@@ -1,6 +1,5 @@
 <%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary' %>
 
-
 <% if @service %>
   <h1><%= @service.name %></h1>
   <p>Description: <%= @service.description %></p>
@@ -9,13 +8,11 @@
 
   <%= link_to "Edit Service", edit_service_path(@service), class: "btn btn-secondary mr-2" %>
 
-<%= form_with(model: @service, url: service_path(@service), method: :delete, data: { confirm: "Are you sure?" }) do |form| %>
-  <%= form.submit "Delete Service", class: "btn btn-danger" %>
-<% end %>
+  <%= form_with(model: @service, url: service_path(@service), method: :delete, data: { confirm: "Are you sure?" }) do |form| %>
+    <%= form.submit "Delete Service", class: "btn btn-danger" %>
+  <% end %>
 
-
-
-
+  <%= link_to "Book Now", new_booking_path(service_id: @service.id), class: "btn btn-primary" %>
 <% else %>
   <p>Service not found</p>
 <% end %>
