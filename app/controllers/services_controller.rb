@@ -6,6 +6,8 @@ class ServicesController < ApplicationController
   end
 
   def show
+    @service = Service.find(params[:id])
+    @bookings = @service.bookings
   end
 
   def new
