@@ -1,2 +1,31 @@
-<h1>Administrators#index</h1>
-<p>Find me in app/views/administrators/index.html.erb</p>
+<h1>All Bookings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Service</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.id %></td>
+        <td><%= booking.user.email %></td>
+        <td><%= booking.service.name %></td>
+        <td><%= booking.booking_date %></td>
+        <td><%= booking.booking_status %></td> <!-- Corrected from booking.status to booking.booking_status -->
+        <td>
+          <%= form_with(model: booking, url: administrator_booking_path(booking), method: :patch) do |form| %>
+            <%= form.select :booking_status, options_for_select(['Pending', 'Accepted', 'Declined'], booking.booking_status), {}, class: 'form-control' %> <!-- Corrected from booking.status to booking.booking_status -->
+            <%= form.submit 'Update', class: 'btn btn-primary' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

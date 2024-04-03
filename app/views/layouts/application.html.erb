@@ -57,10 +57,14 @@
                 <% end %>
               </div>
             </li>
-          <li class="nav-item">
-  <%= link_to "Bookings", bookings_path, class: "nav-link" %>
-</li>
-
+            <li class="nav-item">
+              <%= link_to "Bookings", bookings_path, class: "nav-link" %>
+            </li>
+            <% if administrator_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'All Bookings', administrators_path, class: 'nav-link' %>
+            </li>
+          <% end %>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -75,7 +79,7 @@
       <%= link_to 'Sign up', new_user_registration_path %>
       <%= link_to 'Sign in', new_user_session_path %>
     <% end %>
-    <%- if administrator_signed_in? %>
+    <% if administrator_signed_in? %>
       <%= link_to 'Sign out', destroy_administrator_session_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign up', new_administrator_registration_path %>
