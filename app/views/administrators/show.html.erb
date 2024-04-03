@@ -18,10 +18,10 @@
         <td><%= booking.user.email %></td>
         <td><%= booking.service.name %></td>
         <td><%= booking.booking_date %></td>
-        <td><%= booking.booking_status %></td> <!-- Corrected from booking.status to booking.booking_status -->
+        <td><%= booking.booking_status %></td>
         <td>
-          <%= form_with(model: booking, url: administrator_booking_path(booking), method: :patch) do |form| %>
-            <%= form.select :booking_status, options_for_select(['Pending', 'Accepted', 'Declined'], booking.booking_status), {}, class: 'form-control' %> <!-- Corrected from booking.status to booking.booking_status -->
+          <%= form_with(model: booking, url: administrator_booking_path(@administrator, booking), method: :patch) do |form| %>
+            <%= form.select :booking_status, options_for_select(['Pending', 'Accepted', 'Declined'], booking.booking_status), {}, class: 'form-control' %>
             <%= form.submit 'Update', class: 'btn btn-primary' %>
           <% end %>
         </td>

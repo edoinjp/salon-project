@@ -14,13 +14,15 @@ class AdministratorsController < ApplicationController
   end
 
   def update
-    @booking = Booking.find(params[:id])
+    @administrator = current_administrator
+    @booking = @administrator.bookings.find(params[:id])
     if @booking.update(booking_params)
-      redirect_to administrators_path, notice: 'Booking status updated successfully.'
+      redirect_to administrator_path(@administrator), notice: 'Booking status updated successfully.'
     else
       render :show
     end
   end
+
 
   private
 
