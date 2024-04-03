@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'dashboard', to: 'bookings#dashboard', as: 'admin_dashboard'
+
+
   # Define RESTful routes for managing users
   resources :users
 
