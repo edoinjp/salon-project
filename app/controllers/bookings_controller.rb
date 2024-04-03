@@ -13,12 +13,14 @@ class BookingsController < ApplicationController
 
   def create
     @booking = current_user.bookings.build(booking_params)
+    @booking.booking_status = 'Pending' # Set the status to 'Pending' here
     if @booking.save
       redirect_to @booking, notice: 'Booking was successfully created'
     else
       render :new
     end
   end
+
 
 
   def edit
@@ -29,7 +31,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-    redirect_to @booking, notice: `booking was succesfully updated`
+      redirect_to @booking, notice: 'Booking was successfully updated'
     else
       render :edit
     end
@@ -38,8 +40,9 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to bookings_url, notice: `booking was succesfully deleted`
+    redirect_to bookings_url, notice: 'Booking was successfully deleted'
   end
+
 
   private
 

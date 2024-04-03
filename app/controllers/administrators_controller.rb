@@ -5,6 +5,7 @@ class AdministratorsController < ApplicationController
     # You may implement this action if needed
   end
 
+
   def show
     @administrator = current_administrator
     # Uncomment this line if you want to show all bookings
@@ -21,6 +22,24 @@ class AdministratorsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def accept_booking
+    render_404 unless valid_booking?
+
+    @administrator = Administrator.find(params[:administrator_id])
+    @booking = Booking.find(params[:booking_id])
+
+    @booking.update(booking_status: 'Accepted')
+    redirect_back(fallback_location: root_path)
+  end
+
+  def decline_booking
+    @administrator = Administrator.find(params[:administrator_id])
+
+    @booking = Booking.find(params[:booking_id])
+    @booking.update(booking_status: 'Declined')
+    redirect_back(fallback_location: root_path)
   end
 
 

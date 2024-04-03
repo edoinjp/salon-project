@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   # Define RESTful routes for managing services
   resources :services
 
-# Define RESTful routes for managing administrators
-resources :administrators, only: [:index, :show, :update] do
-  # Define nested resource for bookings under administrators
-  resources :bookings, only: [:update], controller: 'administrators/bookings'
-end
-
+  # Define RESTful routes for managing administrators
+  resources :administrators, only: [:index, :show, :update] do
+    resources :bookings, only: [:update], module: :administrators
+    patch 'accept_booking/:booking_id', to: 'administrators#accept_booking', as: 'accept_booking'
+    patch 'decline_booking/:booking_id', to: 'administrators#decline_booking', as: 'decline_booking'
+  end
 
 
   # Define RESTful routes for managing bookings
