@@ -3,11 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :administrators
 
-  resources :administrators, only: [:index, :show, :update] do
-    resources :bookings, only: [:update], controller: 'administrators/bookings'
-  end
-
-
   # Define custom sign-out routes for both users and administrators
   devise_scope :user do
     delete '/logout', to: 'devise/sessions#destroy', as: :user_logout
@@ -21,7 +16,10 @@ Rails.application.routes.draw do
   resources :services
 
   # Define RESTful routes for managing administrators
-  resources :administrators
+  resources :administrators, only: [:index, :show, :update] do
+    resources :bookings, only: [:update], controller: 'administrators/bookings'
+  end
+
 
   # Define RESTful routes for managing bookings
   resources :bookings

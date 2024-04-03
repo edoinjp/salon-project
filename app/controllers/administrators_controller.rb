@@ -2,16 +2,20 @@ class AdministratorsController < ApplicationController
   before_action :authenticate_administrator!
 
   def index
-    @bookings = Booking.all
+    # You may implement this action if needed
   end
 
   def show
-    @booking = Booking.find(params[:id])
+    @administrator = current_administrator
+    # Uncomment this line if you want to show all bookings
+    # @bookings = Booking.all
+    # Keep this line if you want to show bookings associated with the current administrator
+    @bookings = @administrator.bookings
   end
 
   def update
     @booking = Booking.find(params[:id])
-    if @booking.update(booking_status_params)
+    if @booking.update(booking_params)
       redirect_to administrators_path, notice: 'Booking status updated successfully.'
     else
       render :show
@@ -20,7 +24,8 @@ class AdministratorsController < ApplicationController
 
   private
 
-  def booking_status_params
+  def booking_params
+    # Permit any other necessary parameters here
     params.require(:booking).permit(:status)
   end
 end
