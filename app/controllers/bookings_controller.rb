@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+  def dashboard
+    @bookings = Bookings.all
+  end
+
   def index
     @bookings = current_user.bookings
   end
@@ -40,6 +44,19 @@ class BookingsController < ApplicationController
     @booking.destroy
     redirect_to bookings_url, notice: `booking was succesfully deleted`
   end
+
+  def approve
+    booking = Booking.find(params[:id])
+    booking.update(booking_status: 'approved')
+     # Redirect or render appropriate response
+  end
+
+  def decline
+    booking = Booking.find(params[:id])
+    booking.update(booking_status: 'declined')
+    # Redirect or render appropriate response
+  end
+
 
   private
 

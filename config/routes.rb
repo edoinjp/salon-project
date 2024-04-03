@@ -19,7 +19,12 @@ Rails.application.routes.draw do
   resources :administrators
 
   # Define RESTful routes for managing bookings
-  resources :bookings
+  resources :bookings do
+    member do
+      patch :approve
+      patch :decline
+    end
+  end
 
   # Define RESTful routes for managing users
   resources :users
