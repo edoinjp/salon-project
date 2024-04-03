@@ -35,33 +35,37 @@
             <li class="nav-item">
               <%= link_to 'services', services_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <% if current_user %>
-                  <%= current_user.email %>
-                <% else %>
-                  <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
-                <% end %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% if current_user %>
-                  <!-- Display links for signed-in users -->
-                  <a class="dropdown-item" href="#">Edit Profile</a>
-                  <a class="dropdown-item" href="#">Change Password</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete">Log Out</a>
-                <% else %>
-                  <!-- Display links for non-signed-in users -->
-                  <a class="dropdown-item" href="<%= new_user_session_path %>">Sign In</a>
-                  <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign Up</a>
-                <% end %>
-              </div>
+            <li class="nav-item">
+              <%= link_to "Bookings", bookings_path, class: "nav-link" %>
             </li>
-          <li class="nav-item">
-  <%= link_to "Bookings", bookings_path, class: "nav-link" %>
-</li>
-
+            <li>
+              <% if administrator_signed_in? %> <!-- Check if an administrator is signed in -->
+                <%= link_to "Admin Dashboard", admin_dashboard_path, class: "nav-link" %>
+              <% end %>
+            </li>
           </ul>
+          <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user %>
+                <%= current_user.email %>
+              <% else %>
+                <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+              <% end %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% if current_user %>
+                <!-- Display links for signed-in users -->
+                <a class="dropdown-item" href="#">Edit Profile</a>
+                <a class="dropdown-item" href="#">Change Password</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete">Log Out</a>
+              <% else %>
+                <!-- Display links for non-signed-in users -->
+                <a class="dropdown-item" href="<%= new_user_session_path %>">Sign In</a>
+                <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign Up</a>
+              <% end %>
+            </div>
+          </li>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <h1 class="mt-5 mb-4">Dashboard</h1>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>User</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.user.user_name %></td>
+          <td><%= booking.service.name %></td>
+          <td><%= booking.booking_date %></td>
+          <td><%= booking.id %></td>
+          <td><%= booking.booking_status %></td>
+          <td>
+            <%= link_to 'Approve', approve_booking_path(booking), method: :patch %>
+            <%= link_to 'Decline', decline_booking_path(booking), method: :patch %>
+          </td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
