@@ -19,12 +19,28 @@ Rails.application.routes.draw do
   resources :administrators
 
   # Define RESTful routes for managing bookings
+  # resources :bookings do
+  #   member do
+  #     patch :approve
+  #     patch :decline
+  #   end
+  # end
+  # resources :bookings
+
+  # patch '/bookings/:id/approve', to: 'bookings#approve', as: 'approve_booking'
+  # patch '/bookings/:id/decline', to: 'bookings#decline', as: 'decline_booking'
+
+  # resources :bookings do
+  #   member do
+  #     patch 'approve'
+  #     patch 'decline'
+  #   end
+  # end
   resources :bookings do
-    member do
-      patch :approve
-      patch :decline
-    end
+    patch 'approve', on: :member
+    patch 'decline', on: :member
   end
+
 
 
   # Define route for admin dashboard

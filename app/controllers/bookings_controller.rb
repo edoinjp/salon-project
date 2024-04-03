@@ -1,6 +1,9 @@
+
 class BookingsController < ApplicationController
+
   def dashboard
     @bookings = Booking.all
+    # @booking = Booking.find(params[:id])
   end
 
   def index
@@ -50,10 +53,11 @@ class BookingsController < ApplicationController
   end
 
   def decline
-    booking = Booking.find(params[:id])
+  @booking = Booking.find(params[:id])
     booking.update(booking_status: 'declined')
     redirect_to admin_dashboard_path, notice: 'Booking declined successfully'
   end
+
 
   private
 
