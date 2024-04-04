@@ -1,8 +1,12 @@
-<!-- app/views/bookings/show.html.erb -->
-<p>
-  <strong>Booking Date:</strong>
-  <%= @booking.booking_date %>
-</p>
-
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+<div class="container">
+  <h1>Edit Booking</h1>
+  <p>
+    <strong>Booking Date:</strong>
+    <%= @booking.booking_date %>
+  </p>
+  <%= link_to 'Back', bookings_path, class: 'btn btn-secondary' %>
+  <%= form_tag booking_path(@booking), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <%= submit_tag 'Destroy', class: 'btn btn-danger' %>
+  <% end %>
+  <%= link_to 'Edit', edit_booking_path(@booking), class: 'btn btn-primary mr-2' %>
+</div>

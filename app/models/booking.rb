@@ -1,5 +1,7 @@
 class Booking < ApplicationRecord
   # Valid statuses: approved, declined, pending
+  enum booking_status: { pending: 0, approved: 1, declined: 2 }
+
   validates :booking_status, inclusion: { in: %w(approved declined pending) }
 
   belongs_to :user
@@ -7,4 +9,8 @@ class Booking < ApplicationRecord
   belongs_to :administrator
 
   validates :booking_date, presence: true
+
+  def self.statuses
+    booking_statuses.keys.map { |status| [status.titleize, status] }
+  end
 end
