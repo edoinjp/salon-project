@@ -47,14 +47,14 @@ class BookingsController < ApplicationController
   end
 
   def approve
-    booking = Booking.find(params[:id])
-    booking.update(booking_status: 'approved')
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_status: 'approved')
     redirect_to admin_dashboard_path, notice: 'Booking approved successfully'
   end
 
   def decline
-  @booking = Booking.find(params[:id])
-    booking.update(booking_status: 'declined')
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_status: 'declined')
     redirect_to admin_dashboard_path, notice: 'Booking declined successfully'
   end
 

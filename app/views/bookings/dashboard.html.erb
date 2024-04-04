@@ -16,13 +16,13 @@
           <td><%= booking.user.user_name %></td>
           <td><%= booking.service.name %></td>
           <td><%= booking.booking_date %></td>
-          <td><%= booking.id %></td>
           <td><%= booking.booking_status %></td>
           <td>
             <%= link_to 'Approve', approve_booking_path(booking), method: :patch %>
             <%= link_to 'Decline', decline_booking_path(booking), method: :patch %>
           </td>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
