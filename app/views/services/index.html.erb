@@ -1,26 +1,24 @@
 <div class="container mt-4">
   <%# <h1 class="mb-4">Services#index</h1> %>
-<%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary' %>
+  <%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary' %>
   <section style="display: flex; flex-wrap: wrap; justify-content: flex-start; margin: 20px;">
-     <% @services.each do |service| %>
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <!-- Image -->
-              <img src="service_image_url_here" class="card-img-top" alt="Service Image">
-              <div class="card-body">
-                <!-- Service Information -->
-                <h5 class="card-title"><%= link_to service.name, service %></h5>
-                <p class="card-text">Duration: <%= service.duration %> minutes</p>
-               <p class="card-text"><%= truncate(service.description, length: 20) %></p>
-                <p class="card-text">Price: <%= number_to_currency(service.price) %></p>
-                <!-- Button to View Service Details -->
-                <%= link_to "View Details", service, class: "btn btn-secondary" %>
-              </div>
-            </div>
+    <% @services.each do |service| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <!-- Image -->
+          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Placeholder Image" width="150" height="350">
+          <div class="card-body">
+            <!-- Service Information -->
+            <h5 class="card-title"><%= link_to service.name, service %></h5>
+            <p class="card-text">Duration: <%= service.duration %> minutes</p>
+            <p class="card-text"><%= truncate(service.description, length: 20) %></p>
+            <p class="card-text">Price: <%= number_to_currency(service.price) %></p>
+            <!-- Button to View Service Details -->
+            <%= link_to "View Details", service, class: "btn btn-secondary" %>
           </div>
-        <% end %>
+        </div>
+      </div>
+    <% end %>
   </section>
-
   <%= link_to "Create New Service", new_service_path, class: "btn btn-primary mt-4" %>
-
 </div>
