@@ -1,6 +1,7 @@
-<!-- app/views/bookings/new.html.erb -->
-<h1>New Booking</h1>
-
-<%= render 'form', booking: @booking %>
-
-<%= link_to 'Back', bookings_path %>
+<div class="container">
+  <h1 class="mt-5 display-4">New Booking</h1>
+<br>
+  <%= render 'form', booking: @booking %>
+<br>
+  <a class="btn btn-outline-secondary mt-3" href="<%= bookings_path %>">Back</a>
+</div>

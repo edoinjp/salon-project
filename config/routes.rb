@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   devise_for :administrators
 
   # Define custom sign-out routes for both users and administrators
-  devise_scope :user do
-    delete '/logout', to: 'devise/sessions#destroy', as: :user_logout
-  end
+  # devise_scope :user do
+  #   delete '/logout', to: 'devise/sessions#destroy', as: :user_logout
+  # end
 
-  devise_scope :administrator do
-    delete '/logout_admin', to: 'devise/sessions#destroy', as: :administrator_logout
-  end
+  # devise_scope :administrator do
+  #   delete '/logout_admin', to: 'devise/sessions#destroy', as: :administrator_logout
+  # end
 
   # Define RESTful routes for managing services
   resources :services
@@ -19,29 +19,12 @@ Rails.application.routes.draw do
   resources :administrators
 
   # Define RESTful routes for managing bookings
-  # resources :bookings do
-  #   member do
-  #     patch :approve
-  #     patch :decline
-  #   end
-  # end
-  # resources :bookings
-
-  # patch '/bookings/:id/approve', to: 'bookings#approve', as: 'approve_booking'
-  # patch '/bookings/:id/decline', to: 'bookings#decline', as: 'decline_booking'
-
-  # resources :bookings do
-  #   member do
-  #     patch 'approve'
-  #     patch 'decline'
-  #   end
-  # end
   resources :bookings do
-    patch 'approve', on: :member
-    patch 'decline', on: :member
+    member do
+      patch :approve
+      patch :decline
+    end
   end
-
-
 
   # Define route for admin dashboard
   get 'dashboard', to: 'bookings#dashboard', as: 'admin_dashboard'

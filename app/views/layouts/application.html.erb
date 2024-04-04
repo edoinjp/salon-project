@@ -35,9 +35,11 @@
             <li class="nav-item">
               <%= link_to 'services', services_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Bookings", bookings_path, class: "nav-link" %>
-            </li>
+            <% unless administrator_signed_in? %> <!-- Check if an administrator is not signed in -->
+              <li class="nav-item"> <!-- Wrap the bookings link inside this condition -->
+                <%= link_to 'Bookings', bookings_path, class: 'nav-link' %>
+              </li>
+            <% end %>
             <li>
               <% if administrator_signed_in? %> <!-- Check if an administrator is signed in -->
                 <%= link_to "Admin Dashboard", admin_dashboard_path, class: "nav-link" %>
@@ -46,7 +48,9 @@
           </ul>
           <li class="nav-item dropdown navbar-nav">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <% if current_user %>
+              <% if current_administrator %>
+                <%= current_administrator.email %> (Administrator)
+              <% elsif current_user %>
                 <%= current_user.email %>
               <% else %>
                 <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
@@ -61,9 +65,19 @@
                 <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete">Log Out</a>
               <% else %>
                 <!-- Display links for non-signed-in users -->
-                <a class="dropdown-item" href="<%= new_user_session_path %>">Sign In</a>
-                <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign Up</a>
+                <a class="dropdown-item" href="<%= new_user_session_path %>">User Sign In</a>
+                <a class="dropdown-item" href="<%= new_user_registration_path %>">User Sign Up</a>
               <% end %>
+              <div class="dropdown-divider"></div>
+              <% if administrator_signed_in? %>
+                <!-- Display links for signed-in administrators -->
+                <a class="dropdown-item" href="<%= destroy_administrator_session_path %>" data-method="delete">Admin Log Out</a>
+              <% else %>
+                <!-- Display links for non-signed-in administrators -->
+                <a class="dropdown-item" href="<%= new_administrator_session_path %>">Admin Sign In</a>
+                <a class="dropdown-item" href="<%= new_administrator_registration_path %>">Admin Sign Up</a>
+              <% end %>
+
             </div>
           </li>
           <form class="form-inline my-2 my-lg-0">
@@ -73,18 +87,6 @@
         </div>
       </nav>
     </div>
-    <%- if user_signed_in? %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign up', new_user_registration_path %>
-      <%= link_to 'Sign in', new_user_session_path %>
-    <% end %>
-    <%- if administrator_signed_in? %>
-      <%= link_to 'Sign out', destroy_administrator_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign up', new_administrator_registration_path %>
-      <%= link_to 'Sign in', new_administrator_session_path %>
-    <% end %>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

@@ -1,28 +1,42 @@
+<!-- bookings/dashboard.html.erb -->
+
 <div class="container-fluid">
-  <h1 class="mt-5 mb-4">Dashboard</h1>
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>User</th>
-        <th>Service</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.user.user_name %></td>
-          <td><%= booking.service.name %></td>
-          <td><%= booking.booking_date %></td>
-          <td><%= booking.id %></td>
-          <td><%= booking.booking_status %></td>
-          <td>
-            <%= link_to 'Approve', approve_booking_path(booking), method: :patch %>
-            <%= link_to 'Decline', decline_booking_path(booking), method: :patch %>
-          </td>
-        <% end %>
-      </tbody>
-    </table>
+  <h1 class="mt-5 mb-4 text-center">Dashboard</h1>
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>User</th>
+              <th>Service</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th style="width: 200px;">Actions</th> <!-- Adjust width as needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <% @bookings.each do |booking| %>
+              <tr>
+                <td><%= booking.user.user_name %></td>
+                <td><%= booking.service.name %></td>
+                <td><%= booking.booking_date %></td>
+                <td><%= booking.booking_status || "Pending" %></td> <!-- Display booking status or "Pending" if status is nil -->
+                <td>
+                  <div class="btn-group" role="group">
+                    <%= form_tag approve_booking_path(booking), method: :patch do %>
+                      <%= submit_tag 'Approve', class: 'btn btn-primary mr-1' %> <!-- Added mr-1 class for right margin -->
+                    <% end %>
+                    <%= form_tag decline_booking_path(booking), method: :patch do %>
+                      <%= submit_tag 'Decline', class: 'btn btn-danger' %>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+</div>

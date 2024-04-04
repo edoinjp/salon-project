@@ -17,5 +17,5 @@ end
 if admin.persisted?
   puts "Admin user created successfully!"
 else
-  puts "Admin user already exists."
+  puts "Error creating admin user: #{admin.errors.full_messages.join(', ')}"
 end
