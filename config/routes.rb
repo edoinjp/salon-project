@@ -36,10 +36,13 @@ Rails.application.routes.draw do
   #     patch 'decline'
   #   end
   # end
-  resources :bookings do
-    patch 'approve', on: :member
-    patch 'decline', on: :member
+ # Define RESTful routes for managing bookings
+ resources :bookings do
+  member do
+    patch :approve
+    patch :decline
   end
+end
 
 
 

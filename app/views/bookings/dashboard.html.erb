@@ -17,10 +17,15 @@
           <td><%= booking.service.name %></td>
           <td><%= booking.booking_date %></td>
           <td><%= booking.booking_status %></td>
-          <td>
-            <%= link_to 'Approve', approve_booking_path(booking), method: :patch %>
-            <%= link_to 'Decline', decline_booking_path(booking), method: :patch %>
-          </td>
+         <td>
+  <%= form_tag approve_booking_path(booking), method: :patch do %>
+    <%= submit_tag 'Approve', class: 'btn btn-primary' %>
+  <% end %>
+  <%= form_tag decline_booking_path(booking), method: :patch do %>
+    <%= submit_tag 'Decline', class: 'btn btn-danger' %>
+  <% end %>
+</td>
+
         </tr>
       <% end %>
     </tbody>

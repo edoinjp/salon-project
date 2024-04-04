@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Booking Date</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.booking_date %></td>
+        <td><%= booking.booking_status || "Pending" %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
