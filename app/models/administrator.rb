@@ -9,6 +9,6 @@ class Administrator < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   def administrator?
-    true # For example, return true for all administrators
+    self.admin? # Check if the role is admin
   end
 end
