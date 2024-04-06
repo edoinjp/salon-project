@@ -1,8 +1,7 @@
-<%= form_with(model: booking, local: true, html: { class: "form-horizontal" }) do |form| %>
+<%= form_with(model: booking, local: true, html: { class: "bootstrap-form" }) do |form| %>
   <% if booking.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
+    <div class="alert alert-danger">
       <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
-
       <ul>
         <% booking.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,32 +12,23 @@
 
   <!-- Booking Date Field -->
   <div class="form-group">
-    <%= form.label :booking_date, class: "control-label col-sm-2" %>
-    <div class="col-sm-10">
-      <%= form.datetime_field :booking_date, class: "form-control" %>
-    </div>
+    <%= form.label :booking_date, class: "control-label" %>
+    <%= form.datetime_field :booking_date, class: "form-control" %>
   </div>
 
   <!-- Service Selection Field -->
   <div class="form-group">
-    <%= form.label :service_id, class: "control-label col-sm-2" %>
-    <div class="col-sm-10">
-      <%= form.collection_select :service_id, Service.all, :id, :name, { prompt: "Select a service" }, { class: "form-control" } %>
-    </div>
+    <%= form.label :service_id, class: "control-label" %>
+    <%= form.collection_select :service_id, Service.all, :id, :name, { prompt: "Select Service" }, { class: "form-control" } %>
   </div>
 
   <!-- Administrator Selection Field -->
   <div class="form-group">
-  <%= form.label :administrator_id, class: "control-label col-sm-2" %>
-  <div class="col-sm-10">
-    <%= form.collection_select :administrator_id, Administrator.all, :id, :username, { prompt: "Select an administrator" }, class: "form-control" %>
+    <%= form.label :administrator_id, class: "control-label" %>
+    <%= form.collection_select :administrator_id, Administrator.all, :id, :username, { prompt: "Select Administrator" }, { class: "form-control" } %>
   </div>
-</div>
-
 
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= form.submit "Submit", class: "btn btn-primary" %>
-    </div>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
