@@ -7,6 +7,9 @@ gem 'execjs'
 # device gem for registrations
 gem 'devise'
 
+# simple form
+gem 'simple_form'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 

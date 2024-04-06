@@ -52,30 +52,20 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, notice: 'Booking was successfully deleted.'
   end
 
-
-
-  def approve
+  def update_status
     @booking = Booking.find(params[:id])
-    @booking.update(booking_status: 'approved')
-    redirect_to admin_dashboard_path, notice: 'Booking approved successfully'
-  end
+    new_status = params[:status]
 
-  def decline
-    @booking = Booking.find(params[:id])
-    @booking.update(booking_status: 'declined')
-    redirect_to admin_dashboard_path, notice: 'Booking declined successfully'
+    if new_status == 'accepted' || new_status == 'rejected'
+      @booking.update(booking_status: new_status)
+      redirect_to admin_dashboard_path, notice: 'Booking status updated successfully.'
+    else
+      redirect_to admin_dashboard_path, alert: 'Invalid status.'
+    end
   end
-
 
 
   private
-  def next_available_administrator
-    # Get all administrators who are not currently assigned a booking
-    available_administrators = Administrator.where.not(id: Booking.where.not(administrator_id: nil).select(:administrator_id))
-
-    # If there are no available administrators, fallback to the first administrator
-    available_administrators.present? ? available_administrators.first.id : Administrator.first.id
-  end
 
   def booking_params
     params.require(:booking).permit(:booking_date, :service_id, :administrator_id)

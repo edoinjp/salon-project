@@ -1,5 +1,4 @@
 <!-- bookings/dashboard.html.erb -->
-
 <div class="container-fluid">
   <h1 class="mt-5 mb-4 text-center">Dashboard</h1>
   <div class="row">
@@ -12,7 +11,8 @@
               <th>Service</th>
               <th>Date</th>
               <th>Status</th>
-              <th style="width: 200px;">Actions</th> <!-- Adjust width as needed -->
+              <th style="width: 200px;">Actions</th>
+              <!-- Adjust width as needed -->
             </tr>
           </thead>
           <tbody>
@@ -21,14 +21,16 @@
                 <td><%= booking.user.user_name %></td>
                 <td><%= booking.service.name %></td>
                 <td><%= booking.booking_date %></td>
-                <td><%= booking.booking_status || "Pending" %></td> <!-- Display booking status or "Pending" if status is nil -->
+                <td><%= booking.booking_status || "Pending" %></td>
                 <td>
-                  <div class="btn-group" role="group">
-                    <%= form_tag approve_booking_path(booking), method: :patch do %>
-                      <%= submit_tag 'Approve', class: 'btn btn-primary mr-1' %> <!-- Added mr-1 class for right margin -->
+                  <div class="d-flex">
+                    <%= form_tag(update_status_booking_path(booking), method: :put) do %>
+                      <%= hidden_field_tag :status, 'accepted' %>
+                      <%= submit_tag 'Accept', class: 'btn btn-info' %>
                     <% end %>
-                    <%= form_tag decline_booking_path(booking), method: :patch do %>
-                      <%= submit_tag 'Decline', class: 'btn btn-danger' %>
+                    <%= form_tag(update_status_booking_path(booking), method: :put) do %>
+                      <%= hidden_field_tag :status, 'rejected' %>
+                      <%= submit_tag 'Reject', class: 'btn btn-light' %>
                     <% end %>
                   </div>
                 </td>
