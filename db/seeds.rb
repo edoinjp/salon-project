@@ -12,6 +12,7 @@ admin = Administrator.find_or_create_by(email: 'admin@example.com') do |admin|
   admin.username = 'admin'
   admin.password = 'password'
   admin.password_confirmation = 'password'
+  admin.role = 'admin' # Set the role to 'admin' for the admin user
 end
 
 if admin.persisted?

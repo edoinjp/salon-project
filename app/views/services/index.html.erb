@@ -20,5 +20,7 @@
       </div>
     <% end %>
   </section>
-  <%= link_to "Create New Service", new_service_path, class: "btn btn-primary mt-4" %>
+  <% if current_administrator %>
+    <%= link_to "Create New Service", new_service_path, class: "btn btn-primary mt-4" %>
+  <% end %>
 </div>

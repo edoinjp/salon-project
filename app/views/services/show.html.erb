@@ -1,34 +1,37 @@
 <div class="container mt-4">
   <%= link_to 'Go Back', 'javascript:history.back()', class: 'btn btn-primary mb-3' %>
-
   <div class="row">
     <% if @service %>
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <!-- Placeholder image with adjusted size -->
-          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Placeholder Image" width="150" height="350">
-          <div class="card-body">
-            <h5 class="card-title"><%= @service.name %></h5>
-            <p class="card-text">Duration: <%= @service.duration %> minutes</p>
-            <p class="card-text">Price: <%= number_to_currency(@service.price) %></p>
-          </div>
-          <div class="card-footer">
+      <div class="row no-gutters">
+        <div class="col-md-6">
+          <img src="https://via.placeholder.com/800" class="card-img-top rounded-0" alt="Placeholder Image">
+        </div>
+        <div class="col-md-6 about d-flex align-items-center justify-content-center">
+          <div class="card-body about">
+            <h2 class="card-title"><%= @service.name %></h2>
+            <br>
+            <p class="card-text"><strong>Duration:</strong> <%= @service.duration %> minutes</p>
+            <p class="card-text"><strong>Price:</strong> <%= number_to_currency(@service.price) %></p>
+            <p class="card-text"><strong>Description:</strong> <%= @service.description %></p>
+            <br>
             <div class="btn-group" role="group" aria-label="Service Actions">
-              <%= link_to "Edit Service", edit_service_path(@service), class: "btn btn-secondary btn-sm mr-2" %>
-              <%= form_with(model: @service, url: service_path(@service), method: :delete, data: { confirm: "Are you sure?" }) do |form| %>
-                <%= form.submit "Delete Service", class: "btn btn-danger btn-sm mr-2" %>
+              <% if current_administrator %>
+                <%= link_to "Edit Service", edit_service_path(@service), class: "btn btn-secondary btn-sm mr-2" %>
+                <%= form_with(model: @service, url: service_path(@service), method: :delete, data: { confirm: "Are you sure?" }) do |form| %>
+                  <%= form.submit "Delete Service", class: "btn btn-danger btn-sm mr-2" %>
+                <% end %>
               <% end %>
               <%= link_to "Book Now", new_booking_path(service_id: @service.id), class: "btn btn-primary btn-sm" %>
             </div>
           </div>
         </div>
       </div>
-    <% else %>
-      <div class="col-md-12">
-        <div class="alert alert-warning" role="alert">
-          Service not found
-        </div>
+    </div>
+  <% else %>
+    <div class="col-md-12">
+      <div class="alert alert-warning" role="alert">
+        Service not found
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
