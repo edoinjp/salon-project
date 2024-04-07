@@ -4,6 +4,8 @@
   justify-content: center; /* Center items vertically */
   margin: 0 auto;
   flex-direction: column;
+  width: 90%;
+
 
 }
 
