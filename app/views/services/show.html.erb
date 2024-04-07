@@ -4,14 +4,16 @@
     <% if @service %>
       <div class="row no-gutters">
         <div class="col-md-6">
-          <img src="https://via.placeholder.com/800" class="card-img-top rounded-0" alt="Placeholder Image" style="width: 100%; height: auto;">
+          <img src="https://via.placeholder.com/800" class="card-img-top rounded-0" alt="Placeholder Image">
         </div>
-        <div class="col-md-6">
-          <div class="card-body">
-            <h5 class="card-title"><%= @service.name %></h5>
-            <p class="card-text">Duration: <%= @service.duration %> minutes</p>
-            <p class="card-text">Price: <%= number_to_currency(@service.price) %></p>
-            <p class="card-text">Description: <%= @service.description %></p>
+        <div class="col-md-6 about d-flex align-items-center justify-content-center">
+          <div class="card-body about">
+            <h2 class="card-title"><%= @service.name %></h2>
+            <br>
+            <p class="card-text"><strong>Duration:</strong> <%= @service.duration %> minutes</p>
+            <p class="card-text"><strong>Price:</strong> <%= number_to_currency(@service.price) %></p>
+            <p class="card-text"><strong>Description:</strong> <%= @service.description %></p>
+            <br>
             <div class="btn-group" role="group" aria-label="Service Actions">
               <% if current_administrator %>
                 <%= link_to "Edit Service", edit_service_path(@service), class: "btn btn-secondary btn-sm mr-2" %>
@@ -32,5 +34,4 @@
       </div>
     </div>
   <% end %>
-</div>
 </div>

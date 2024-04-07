@@ -1,0 +1,45 @@
+.about {
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Arrange children vertically */
+  justify-content: center; /* Center items vertically */
+  margin: 0 auto;
+  flex-direction: column;
+
+}
+
+.card-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.btn-group .btn {
+  font-size: 1rem;
+}
+
+.btn-group .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-group .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-group .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-group .btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
