@@ -19,8 +19,9 @@
               <%= form_with(model: @service, url: service_path(@service), method: :delete, data: { confirm: "Are you sure?" }) do |form| %>
                 <%= form.submit "Delete Service", class: "btn btn-danger btn-sm mr-2" %>
               <% end %>
+            <% else %>
+              <%= link_to "Book Now", new_booking_path(service_id: @service.id), class: "btn btn-primary btn-sm" %>
             <% end %>
-            <%= link_to "Book Now", new_booking_path(service_id: @service.id), class: "btn btn-primary btn-sm" %>
           </div>
         </div>
       </div>
