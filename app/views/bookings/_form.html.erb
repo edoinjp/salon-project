@@ -10,10 +10,11 @@
     </div>
   <% end %>
 
-  <!-- Booking Date Field -->
+  <!-- Title for Booking Date -->
   <div class="form-group">
-    <%= form.label :booking_date, class: "control-label" %>
-    <%= form.datetime_field :booking_date, class: "form-control" %>
+    <label class="control-label">Booking Date</label>
+    <!-- Booking Date and Time Field -->
+    <%= form.datetime_select :booking_date, { class: "form-control" }, { ampm: true, minute_step: 15 } %>
   </div>
 
   <!-- Service Selection Field -->
