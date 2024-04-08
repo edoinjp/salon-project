@@ -37,11 +37,14 @@
             <li class="nav-item">
               <%= link_to 'services', services_path, class: 'nav-link' %>
             </li>
-            <% unless administrator_signed_in? %> <!-- Check if an administrator is not signed in -->
-              <li class="nav-item"> <!-- Wrap the bookings link inside this condition -->
-                <%= link_to 'Bookings', bookings_path, class: 'nav-link' %>
-              </li>
-            <% end %>
+<% if user_signed_in? %> <!-- Check if a user is signed in -->
+  <% unless administrator_signed_in? %> <!-- Check if an administrator is not signed in -->
+    <li class="nav-item"> <!-- Wrap the bookings link inside this condition -->
+      <%= link_to 'Bookings', bookings_path, class: 'nav-link' %>
+    </li>
+  <% end %>
+<% end %>
+
             <li>
               <% if administrator_signed_in? %> <!-- Check if an administrator is signed in -->
                 <%= link_to "Admin Dashboard", admin_dashboard_path, class: "nav-link" %>
