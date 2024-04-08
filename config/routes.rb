@@ -11,10 +11,6 @@ Rails.application.routes.draw do
   # devise_scope :administrator do
   #   delete '/logout_admin', to: 'devise/sessions#destroy', as: :administrator_logout
   # end
-  resources :bookings do
-    put :update_status, on: :member
-  end
-
 
   # Define RESTful routes for managing services
   resources :services
@@ -23,8 +19,9 @@ Rails.application.routes.draw do
   resources :administrators
 
   # Define RESTful routes for managing bookings
-  resources :bookings
-  # resources :bookings, only: [:update]
+  resources :bookings do
+    put :update_status, on: :member
+  end
 
   # Define route for admin dashboard
   get 'dashboard', to: 'bookings#dashboard', as: 'admin_dashboard'

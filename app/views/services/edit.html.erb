@@ -1,10 +1,7 @@
 <%= form_with(model: @service, local: true) do |form| %>
+  <h2>Edit Service</h2>
   <div>
-    <%= render 'form' %>
+    <%= render 'form', form: form %>
   </div>
-  <%# Add needed inputs later %>
-  <div class="text-center mt-4">
-    <%= form.submit "Update Service", class: "btn btn-primary" %>
-    <!-- Use 'btn btn-primary' for blue background or 'btn btn-warning' for orange background -->
-  </div>
+
 <% end %>

@@ -7,7 +7,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "/app/assets/stylesheets/show.css" %>
-
     <%# <%= javascript_importmap_tags %>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
@@ -37,14 +36,13 @@
             <li class="nav-item">
               <%= link_to 'services', services_path, class: 'nav-link' %>
             </li>
-<% if user_signed_in? %> <!-- Check if a user is signed in -->
-  <% unless administrator_signed_in? %> <!-- Check if an administrator is not signed in -->
-    <li class="nav-item"> <!-- Wrap the bookings link inside this condition -->
-      <%= link_to 'Bookings', bookings_path, class: 'nav-link' %>
-    </li>
-  <% end %>
-<% end %>
-
+            <% if user_signed_in? %> <!-- Check if a user is signed in -->
+              <% unless administrator_signed_in? %> <!-- Check if an administrator is not signed in -->
+                <li class="nav-item"> <!-- Wrap the bookings link inside this condition -->
+                  <%= link_to 'Bookings', bookings_path, class: 'nav-link' %>
+                </li>
+              <% end %>
+            <% end %>
             <li>
               <% if administrator_signed_in? %> <!-- Check if an administrator is signed in -->
                 <%= link_to "Admin Dashboard", admin_dashboard_path, class: "nav-link" %>
