@@ -3,10 +3,10 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.all
+    @services = Service.order(:order_sequence)
   end
 
   def show
-    @service = Service.find(params[:id])
     @bookings = @service.bookings
   end
 
@@ -33,9 +33,8 @@ class ServicesController < ApplicationController
   end
 
   def destroy
-    @service = Service.find(params[:id])
     @service.destroy
-    redirect_to services_path, notice: "Service was successfully deleted."
+    redirect_to services_path, notice: 'Service was successfully deleted.'
   end
 
   private

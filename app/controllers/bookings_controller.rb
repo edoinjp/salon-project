@@ -14,10 +14,11 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
   end
-
   def new
+    @service = Service.find(params[:service_id])
     @booking = Booking.new
   end
+
 
   def create
     @booking = current_user.bookings.build(booking_params)
