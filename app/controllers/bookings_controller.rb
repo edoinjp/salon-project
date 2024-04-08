@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
   def new
-    @service = Service.find(params[:service_id])
+    # @service = Service.find(params[:service_id])
     @booking = Booking.new
   end
 
