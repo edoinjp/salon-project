@@ -54,3 +54,17 @@
   background-color: #051423;
   border-color: #000000;
 }
+
+
+
+.status-pending {
+  color: orange; /* or any other color you prefer */
+}
+
+.status-rejected {
+  color: red;
+}
+
+.status-accepted {
+  color: green;
+}

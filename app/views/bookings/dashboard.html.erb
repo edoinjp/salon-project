@@ -18,18 +18,7 @@
             <td><%= booking.user.user_name %></td>
             <td><%= booking.service.name %></td>
             <td><%= booking.booking_date %></td>
-            <td class="
-              <% case booking.booking_status
-                when 'accepted'
-                  print 'status-accepted'
-                when 'rejected'
-                  print 'status-rejected'
-                else
-                  print 'status-pending'
-                end
-              %>">
-              <%= booking.booking_status || "Pending" %>
-            </td>
+            <td><%= booking.booking_status || "Pending" %></td>
             <td>
               <div class="btn-group" role="group">
                 <%= form_tag(update_status_booking_path(booking), method: :put) do %>
