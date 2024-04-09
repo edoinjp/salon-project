@@ -23,6 +23,7 @@
 .dark-mode body {
   background-color: #343a40;
   color: #f8f9fa;
+
 }
 
 /* Other Styles */
@@ -35,7 +36,7 @@
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  background-color: rgba(244, 244, 244, 0.495); /* Blue background with transparency */
+  background-color: rgba(242, 242, 242, 0.196); /* Blue background with transparency */
   backdrop-filter: blur(10px); /* Apply a blur effect */
   /* margin-top: -150px; */
 }

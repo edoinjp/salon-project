@@ -36,24 +36,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="<%= root_path %>">Home </a>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'services', services_path, class: 'nav-link' %>
-            </li>
-            <% unless administrator_signed_in? %> <!-- Check if an administrator is not signed in -->
-              <li class="nav-item"> <!-- Wrap the bookings link inside this condition -->
-                <%= link_to 'Bookings', bookings_path, class: 'nav-link' %>
-              </li>
-            <% end %>
-            <li>
-              <% if administrator_signed_in? %> <!-- Check if an administrator is signed in -->
-                <%= link_to "Admin Dashboard", admin_dashboard_path, class: "nav-link" %>
-              <% end %>
-            </li>
-          </ul>
           <li class="nav-item dropdown navbar-nav">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_administrator %>
@@ -86,11 +68,26 @@
                 <a class="dropdown-item" href="<%= new_administrator_registration_path %>">Admin Sign Up</a>
               <% end %>
             </div>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="<%= root_path %>">Home </a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'services', services_path, class: 'nav-link' %>
+            </li>
+            <% unless administrator_signed_in? %> <!-- Check if an administrator is not signed in -->
+              <li class="nav-item"> <!-- Wrap the bookings link inside this condition -->
+                <%= link_to 'Bookings', bookings_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+            <li>
+              <% if administrator_signed_in? %> <!-- Check if an administrator is signed in -->
+                <%= link_to "Admin Dashboard", admin_dashboard_path, class: "nav-link" %>
+              <% end %>
+            </li>
+          </ul>
           </li>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+
         </div>
       </nav>
     </div>
