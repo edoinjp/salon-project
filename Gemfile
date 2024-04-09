@@ -12,6 +12,12 @@ gem 'simple_form'
 
 gem 'sass-rails'
 
+
+gem 'bootstrap', '~> 5.1.3'
+# gem 'turbo-rails'
+
+
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 

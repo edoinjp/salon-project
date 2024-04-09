@@ -15,13 +15,21 @@
  */
  /* Dark Mode Styles */
 
- .dark-mode body {
-   background-color: #343a40;
-   color: #f8f9fa;
- }
- .selector-for-some-widget {
+ @import "show";
+ @import 'bootstrap';
+
+
+/* Dark Mode Styles */
+.dark-mode body {
+  background-color: #343a40;
+  color: #f8f9fa;
+}
+
+/* Other Styles */
+.selector-for-some-widget {
   box-sizing: content-box;
 }
+
 .blur-background {
   padding: 15px;
   display: flex;
@@ -31,3 +39,5 @@
   backdrop-filter: blur(10px); /* Apply a blur effect */
   /* margin-top: -150px; */
 }
+
+/* Add your custom styles below */

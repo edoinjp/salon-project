@@ -5,6 +5,7 @@
     <table class="table">
       <thead class="thead-light">
         <tr>
+          <th scope="col">Service</th> <!-- Added Service column header -->
           <th scope="col">Booking Date</th>
           <th scope="col">Status</th>
           <th scope="col">Actions</th>
@@ -13,6 +14,7 @@
       <tbody>
         <% @bookings.each do |booking| %>
           <tr>
+            <td><%= booking.service.name %></td> <!-- Display Service name -->
             <td><%= booking.booking_date %></td>
             <td><%= booking.booking_status || "Pending" %></td>
             <td>
