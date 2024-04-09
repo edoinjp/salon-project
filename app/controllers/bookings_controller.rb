@@ -23,11 +23,11 @@ class BookingsController < ApplicationController
   def create
     @booking = current_user.bookings.build(booking_params)
     @booking.administrator_id = Administrator.first.id
-
     @booking.booking_status = 'pending'
 
+
     if @booking.save
-      redirect_to @booking, notice: 'Booking was successfully created'
+      redirect_to bookings_path, notice: 'Booking was successfully created'
     else
       render :new
     end
