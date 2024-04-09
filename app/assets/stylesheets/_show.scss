@@ -10,10 +10,14 @@
 }
 
 .card-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 1rem;
+
+}
+.card-title a{
+  color: #04305f;
 }
 
 .card-text {
@@ -27,13 +31,13 @@
 }
 
 .btn-group .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #051423;
+  border-color: #000000;
 }
 
 .btn-group .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #072545;
+  border-color: #000000;
 }
 
 .btn-group .btn-secondary {
@@ -44,4 +48,9 @@
 .btn-group .btn-secondary:hover {
   background-color: #5a6268;
   border-color: #545b62;
+}
+// this is the corrent styling for buttons
+.card-body .btn {
+  background-color: #051423;
+  border-color: #000000;
 }
